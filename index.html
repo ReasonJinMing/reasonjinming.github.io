@@ -362,7 +362,26 @@
 <p>首先我们需要知道，正常样本的英文与negative相关联，异常样本的英文与positive相关联。潜在的含义说明两类样本的地位并不对等。</p>
 <p>如果对于一个正常样本，分类器给出了正确的分类，本来是正常/阴性，并且分类结果也是正常/阴性，那么结果就叫“正确的阴性”，英文叫做true negative或者TN，如果分类器给出了错误的分类，本来是正常/阴性，并且分类结果确是异常/阳性，那么结果就叫“错误的阳性”，英文是false positive或者FP。</p>
 <p>类似的，如果对于一个异常样本，分类器给出了正确的分类，本来是异常/阳性，并且分类结果也是异常/阳性，那么结果就叫“正确的阳性”，英文叫做true positive或者TP，如果分类器给出了错误的分类，本来是异常/阳性，并且分类结果确是正常/阴性，那么结果就叫“错误的阴性”，英文是false negative或者FN。</p>
-<p>借助混淆矩阵可以更加清楚呈现这几项的关系（这里的画法与 wiki 上 confusion matrix 条目上的不同，本质上是一样的）。<br>|              | 预测为正常 | 预测为异常 |<br>| ———— | ———- | ———- |<br>| <strong>正常样本</strong> | TN         | FP         |<br>| <strong>异常样本</strong> | FN         | TP         |</p>
+<p>借助混淆矩阵可以更加清楚呈现这几项的关系（这里的画法与 wiki 上 confusion matrix 条目上的不同，本质上是一样的）。</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">预测为正常</th>
+<th align="center">预测为异常</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>正常样本</strong></td>
+<td align="center">TN</td>
+<td align="center">FP</td>
+</tr>
+<tr>
+<td align="center"><strong>异常样本</strong></td>
+<td align="center">FN</td>
+<td align="center">TP</td>
+</tr>
+</tbody></table>
 <p>主对角线都是正确的预测，次对角线都是预测错误的结果。表格每一项可以理解为累加所有分类结果之后的数字，比如TN有300条，TP有200条等等</p>
 <h2 id="各种指标的定义"><a href="#各种指标的定义" class="headerlink" title="各种指标的定义"></a>各种指标的定义</h2><p>有了基本的概念就开始引入各种指标了，首先是最常见的全局的准确率,代表着被正确分类的全部样本占总样本的比例，计算公式如下：<br>$$\textbf{accuracy}=\frac{\textbf{TP+TN}}{\textbf{TN+TP+FN+FP}}$$<br>一般来说只使用准确率这样的指标就足够了，但是如果正常异常样本分布不平衡，再用这样的指标就会出现问题。设想一个看病的例子，某种疾病人群中只有1%的比例会发病，如果一名医生（分类器）每次诊断都认为患者没有发病，准确率能够达到99%，看起来挺高，但显然这样的结果根本毫无用处。因此我们需要引入别的指标。</p>
 <p>在 wiki 的 confusion matrix 条目上有很多指标可以参考，这里只讨论一部分，首先是true positive rate或者叫detection rate，简称TPR/DR/recall（中文可以叫真阳性率/查全率/召回率）。这个指标指的是有多少异常样本被检测到，也就是被正确检测到的异常样本占总的异常样本的比例。计算公式如下：<br>$$\textbf{TPR}=\frac{\textbf{TP}}{\textbf{TP+FN}}$$<br>回顾上面医生看病的例子，发现如果医生真的每次都说没病，显然这个指标的结果是0，一个异常也没有发现。</p>
