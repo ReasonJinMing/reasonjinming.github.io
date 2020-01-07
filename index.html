@@ -362,20 +362,19 @@
 <p>首先我们需要知道，正常样本的英文与negative相关联，异常样本的英文与positive相关联。潜在的含义说明两类样本的地位并不对等。</p>
 <p>如果对于一个正常样本，分类器给出了正确的分类，本来是正常/阴性，并且分类结果也是正常/阴性，那么结果就叫“正确的阴性”，英文叫做true negative或者TN，如果分类器给出了错误的分类，本来是正常/阴性，并且分类结果确是异常/阳性，那么结果就叫“错误的阳性”，英文是false positive或者FP。</p>
 <p>类似的，如果对于一个异常样本，分类器给出了正确的分类，本来是异常/阳性，并且分类结果也是异常/阳性，那么结果就叫“正确的阳性”，英文叫做true positive或者TP，如果分类器给出了错误的分类，本来是异常/阳性，并且分类结果确是正常/阴性，那么结果就叫“错误的阴性”，英文是false negative或者FN。</p>
-<p>借助混淆矩阵可以更加清楚呈现这几项的关系（这里的画法与 wiki 上 confusion matrix 条目上的不同，本质上是一样的）。<br>|              | 预测为正常 | 预测为异常 |<br>| :—————: | :————: | :————: |<br>| <strong>正常样本</strong> |     TN     |     FP     |<br>| <strong>异常样本</strong> |     FN     |     TP     |</p>
+<p>借助混淆矩阵可以更加清楚呈现这几项的关系（这里的画法与 wiki 上 confusion matrix 条目上的不同，本质上是一样的）。<br>|              | 预测为正常 | 预测为异常 |<br>| :———-: | :——–: | :——–: |<br>| <strong>正常样本</strong> |     TN     |     FP     |<br>| <strong>异常样本</strong> |     FN     |     TP     |</p>
 <p>主对角线都是正确的预测，次对角线都是预测错误的结果。表格每一项可以理解为累加所有分类结果之后的数字，比如TN有300条，TP有200条等等</p>
-<h2 id="各种指标的定义"><a href="#各种指标的定义" class="headerlink" title="各种指标的定义"></a>各种指标的定义</h2><p>有了基本的概念就开始引入各种指标了，首先是最常见的全局的准确率,代表着被正确分类的全部样本占总样本的比例，计算公式如下：</p>
-<script type="math/tex; mode=display">\textbf{accuracy}=\frac{\textbf{TP+TN}}{\textbf{TN+TP+FN+FP}}</script><p>一般来说只使用准确率这样的指标就足够了，但是如果正常异常样本分布不平衡，再用这样的指标就会出现问题。设想一个看病的例子，某种疾病人群中只有1%的比例会发病，如果一名医生（分类器）每次诊断都认为患者没有发病，准确率能够达到99%，看起来挺高，但显然这样的结果根本毫无用处。因此我们需要引入别的指标。</p>
-<p>在 wiki 的 confusion matrix 条目上有很多指标可以参考，这里只讨论一部分，首先是true positive rate或者叫detection rate，简称TPR/DR/recall（中文可以叫真阳性率/查全率/召回率）。这个指标指的是有多少异常样本被检测到，也就是被正确检测到的异常样本占总的异常样本的比例。计算公式如下：</p>
-<script type="math/tex; mode=display">\textbf{TPR}=\frac{\textbf{TP}}{\textbf{TP+FN}}</script><p>回顾上面医生看病的例子，发现如果医生真的每次都说没病，显然这个指标的结果是0，一个异常也没有发现。</p>
-<p>其次是false positive rate或者叫false alarm rate，简称FPR/FAR(中文可以叫假阳性率/误报警率)。这个指标指的是有多少被错误认为的异常的样本。也就是被误报警的正常样本占总的正常样本的比例。计算公式如下：</p>
-<script type="math/tex; mode=display">\textbf{FPR}=\frac{\textbf{FP}}{\textbf{FP+TN}}</script><p>如果医生对于每一个看病的人都认为他有病，那么就可以检测到全部的异常样本，TPR=100%，但是误报警率也是100%，所以还是没什么用。优秀的分类器应当满足这样的条件，查全率足够高，误报警率足够低。</p>
-<p>一般还会将这两种做一个算术平均值，叫做f1 score，这样的好处可以得到一个单一的指标。</p>
-<script type="math/tex; mode=display">\textbf{F1}=\frac{\textbf{TPR+FPR}}{2}</script><h2 id="潜在的关联"><a href="#潜在的关联" class="headerlink" title="潜在的关联"></a>潜在的关联</h2><p>这部分才是重点。。。</p>
-<p>首先正负样本天生就会有不同的比例，假设正常样本数量为$x=\textbf{TP+FN}$，异常样本数量为$y=\textbf{FP+TN}$,那么可以计算出混淆矩阵的各个项的值</p>
-<script type="math/tex; mode=display">\textbf{TP}=\textbf{TPR}\times{y}</script><script type="math/tex; mode=display">\textbf{TN}=(1-\textbf{FPR})\times{x}</script><p>于是可以得到三个指标之间的关系</p>
-<script type="math/tex; mode=display">\textbf{accuracy}=\frac{\textbf{TPR}\times{y}+(1-\textbf{FPR})\times{x}}{x+y}</script><p>很多论文都会把这个三个指标一并给出，解这样一个不定方程，从中我们可以得到正常与异常样本比例，也就能够窥探出其数据处理可能用到了什么trick。当然某些论文的结果甚至可以导致$x$和$y$的比例出现负数，出现这种情况能说明什么我就不知道了（手动狗头）。</p>
-<p>附上快速求解的python代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"></span><br><span class="line">x = sympy.Symbol(<span class="string">'x'</span>)</span><br><span class="line">y = sympy.Symbol(<span class="string">'y'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个例子就是负数比例，TPR=0.9876， FPR=0.0028， acc=0.9991</span></span><br><span class="line">sympy.solve([(<span class="number">99.72</span>*x+<span class="number">98.76</span>*y)/(x+y)<span class="number">-99.91</span>], [x,y])</span><br></pre></td></tr></table></figure></p>
+<h2 id="各种指标的定义"><a href="#各种指标的定义" class="headerlink" title="各种指标的定义"></a>各种指标的定义</h2><p>有了基本的概念就开始引入各种指标了，首先是最常见的全局的准确率,代表着被正确分类的全部样本占总样本的比例，计算公式如下：<br>$$\textbf{accuracy}=\frac{\textbf{TP+TN}}{\textbf{TN+TP+FN+FP}}$$<br>一般来说只使用准确率这样的指标就足够了，但是如果正常异常样本分布不平衡，再用这样的指标就会出现问题。设想一个看病的例子，某种疾病人群中只有1%的比例会发病，如果一名医生（分类器）每次诊断都认为患者没有发病，准确率能够达到99%，看起来挺高，但显然这样的结果根本毫无用处。因此我们需要引入别的指标。</p>
+<p>在 wiki 的 confusion matrix 条目上有很多指标可以参考，这里只讨论一部分，首先是true positive rate或者叫detection rate，简称TPR/DR/recall（中文可以叫真阳性率/查全率/召回率）。这个指标指的是有多少异常样本被检测到，也就是被正确检测到的异常样本占总的异常样本的比例。计算公式如下：<br>$$\textbf{TPR}=\frac{\textbf{TP}}{\textbf{TP+FN}}$$<br>回顾上面医生看病的例子，发现如果医生真的每次都说没病，显然这个指标的结果是0，一个异常也没有发现。</p>
+<p>其次是false positive rate或者叫false alarm rate，简称FPR/FAR(中文可以叫假阳性率/误报警率)。这个指标指的是有多少被错误认为的异常的样本。也就是被误报警的正常样本占总的正常样本的比例。计算公式如下：<br>$$\textbf{FPR}=\frac{\textbf{FP}}{\textbf{FP+TN}}$$<br>如果医生对于每一个看病的人都认为他有病，那么就可以检测到全部的异常样本，TPR=100%，但是误报警率也是100%，所以还是没什么用。优秀的分类器应当满足这样的条件，查全率足够高，误报警率足够低。</p>
+<p>一般还会将这两种做一个算术平均值，叫做f1 score，这样的好处可以得到一个单一的指标。<br>$$\textbf{F1}=\frac{\textbf{TPR+FPR}}{2}$$</p>
+<h2 id="潜在的关联"><a href="#潜在的关联" class="headerlink" title="潜在的关联"></a>潜在的关联</h2><p>这部分才是重点。。。</p>
+<p>首先正负样本天生就会有不同的比例，假设正常样本数量为$x=\textbf{TP+FN}$，异常样本数量为$y=\textbf{FP+TN}$,那么可以计算出混淆矩阵的各个项的值<br>$$\textbf{TP}=\textbf{TPR}\times{y}$$<br>$$\textbf{TN}=(1-\textbf{FPR})\times{x}$$<br>于是可以得到三个指标之间的关系<br>$$\textbf{accuracy}=\frac{\textbf{TPR}\times{y}+(1-\textbf{FPR})\times{x}}{x+y}$$</p>
+<p>很多论文都会把这个三个指标一并给出，解这样一个不定方程，从中我们可以得到正常与异常样本比例，也就能够窥探出其数据处理可能用到了什么trick。当然某些论文的结果甚至可以导致$x$和$y$的比例出现负数，出现这种情况能说明什么我就不知道了（手动狗头）。</p>
+<p>附上快速求解的python代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"></span><br><span class="line">x = sympy.Symbol(<span class="string">'x'</span>)</span><br><span class="line">y = sympy.Symbol(<span class="string">'y'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个例子就是负数比例，TPR=0.9876， FPR=0.0028， acc=0.9991</span></span><br><span class="line">sympy.solve([(<span class="number">99.72</span>*x+<span class="number">98.76</span>*y)/(x+y)<span class="number">-99.91</span>], [x,y])</span><br></pre></td></tr></table></figure>
+
+
 
           
         
@@ -496,11 +495,12 @@
         
           
             <h1 id="说点啥呢？"><a href="#说点啥呢？" class="headerlink" title="说点啥呢？"></a>说点啥呢？</h1><h2 id="不说了"><a href="#不说了" class="headerlink" title="不说了"></a>不说了</h2><h3 id="来点代码"><a href="#来点代码" class="headerlink" title="来点代码"></a>来点代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br></pre></td></tr></table></figure>
+
 <p><em>倾斜也不错</em><br><strong>我</strong>很重要 （ctrl+B）</p>
 <blockquote>
 <p>其他人的话要引用过来</p>
 </blockquote>
-<p>想要数学公式吗？<script type="math/tex">F=mv</script><br>$\sum_{i=1}^{N}i^2=\dfrac{1}{6}(n+1)(n+2)(2n+1)$ 当然这个公式是错的</p>
+<p>想要数学公式吗？$$F=mv$$<br>$\sum_{i=1}^{N}i^2=\dfrac{1}{6}(n+1)(n+2)(2n+1)$ 当然这个公式是错的</p>
 <ul>
 <li>有三点关键</li>
 <li>大家都一样重要</li>
@@ -641,12 +641,16 @@
           
             <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
           
