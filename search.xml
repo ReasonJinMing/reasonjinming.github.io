@@ -20,7 +20,7 @@
 <p>附上快速求解的python代码</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sympy</span><br><span class="line"></span><br><span class="line">x = sympy.Symbol(<span class="string">'x'</span>)</span><br><span class="line">y = sympy.Symbol(<span class="string">'y'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个例子就是负数比例，TPR=0.9876， FPR=0.0028， acc=0.9991</span></span><br><span class="line">sympy.solve([(<span class="number">99.72</span>*x+<span class="number">98.76</span>*y)/(x+y)<span class="number">-99.91</span>], [x,y])</span><br></pre></td></tr></table></figure>
 
-
+<p>不过还有一点，如果很不幸$\textbf{TPR}=1-\textbf{FPR}$,上面的方程$x$和$y$可以带入任意的比例，这种情况下也就挖掘不到什么信息了。</p>
 ]]></content>
   </entry>
   <entry>
