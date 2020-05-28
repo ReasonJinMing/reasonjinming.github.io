@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="今明的闲聊">
 <meta property="og:description" content="什么是二分类问题假设有一个数据集，里面有很多条样本数据，大致存在两类样本，分别是正常样本和异常样本或者也可以说是阴性和阳性，要求一个分类器可以区分出二者。那么这个问题就是二分类问题。就像医生看病一样。 预备知识分类的结果难免会出错，评价各种分类器的好坏就需要引入各种指标，有了标准之后才能进行判断。下面给出一些常用的指标。 首先我们需要知道，正常样本的英文与negative相关联，异常样本的英文与p">
 <meta property="article:published_time" content="2020-01-07T09:09:09.000Z">
-<meta property="article:modified_time" content="2020-01-16T08:07:05.815Z">
+<meta property="article:modified_time" content="2020-05-28T06:54:41.499Z">
 <meta property="article:author" content="JinMing">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
@@ -333,8 +333,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-16T16:07:05+08:00">
-                2020-01-16
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-28T14:54:41+08:00">
+                2020-05-28
               </time>
             
           </span>
@@ -455,7 +455,7 @@
 <p>在 wiki 的 confusion matrix 条目上有很多指标可以参考，这里只讨论一部分，首先是true positive rate或者叫detection rate，简称TPR/DR/recall（中文可以叫真阳性率/查全率/召回率）。这个指标指的是有多少异常样本被检测到，也就是被正确检测到的异常样本占总的异常样本的比例。计算公式如下：</p>
 <script type="math/tex; mode=display">\mathrm{TPR}=\frac{\mathrm{TP}}{\mathrm{TP+FN}}</script><p>回顾上面医生看病的例子，发现如果医生真的每次都说没病，显然这个指标的结果是0，一个异常也没有发现。</p>
 <p>其次是false positive rate或者叫false alarm rate，简称FPR/FAR(中文可以叫假阳性率/误报警率)。这个指标指的是有多少样本本来是正常的却被错误认为是异常的。也就是被误报警的正常样本占总的正常样本的比例。计算公式如下：</p>
-<script type="math/tex; mode=display">\mathrm{FPR}=\frac{\mathrm{FP}}{\mathrm{FP+TN}}</script><p>如果医生对于每一个看病的人都认为他有病，那么就可以检测到全部的异常样本，TPR=100%，但是误报警率也是100%，所以还是没什么用。优秀的分类器应当满足这样的条件，查全率足够高，误报警率足够低。</p>
+<script type="math/tex; mode=display">\mathrm{FPR}=\frac{\mathrm{FP}}{\mathrm{FP+TN}}</script><p>如果医生对于每一个看病的人都认为他有病，那么就可以检测到全部的异常样本，TPR=100%，但是误报警率却达到了99%（人群中1%的异常占比），所以还是没什么用。优秀的分类器应当满足这样的条件，查全率足够高，误报警率足够低。</p>
 <p>还有一个很重要的指标叫做precision，指的是分类器预测为异常的样本中有多少比例是预测对了的。如果看混淆矩阵，那就是TPR，FPR都是在一行里面去计算，precision是在一列里面去计算（一定是本文上面画出的混淆矩阵），公式如下</p>
 <script type="math/tex; mode=display">\mathrm{precision}=\frac{\mathrm{FP}}{\mathrm{FP+TP}}</script><p>一般还会求一个平均值，叫做F1 score（F1分数），计算方法是求$\mathrm{precison}$和$\mathrm{recall}$的调和平均数。这样的好处可以得到一个单一的指标。</p>
 <script type="math/tex; mode=display">\mathrm{F1}=2\cdot\frac{\mathrm{precision}\cdot\mathrm{recall}}{\mathrm{precision+recall}}</script><p>别忘了$\mathrm{TPR=recall}$，一般来讲$\mathrm{precision}$和$\mathrm{recall}$配对，$\mathrm{TPR}$和$\mathrm{FPR}$配对，这是写法上的讲究。</p>
