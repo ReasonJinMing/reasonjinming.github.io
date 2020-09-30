@@ -1819,7 +1819,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #04ff13;
+  background: #ff96cf;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2613,7 +2613,7 @@ pre .javascript .function {
   overflow: hidden;
   padding: 0;
   width: 240px;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.3);
   box-shadow: initial;
   border-radius: initial;
 }
@@ -2672,7 +2672,7 @@ pre .javascript .function {
   box-sizing: border-box;
   padding: 40px;
   width: 700px;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.3);
   min-height: 700px;
   box-shadow: initial;
   border-radius: initial;
@@ -2989,8 +2989,8 @@ pre .javascript .function {
 }
 body {
   background: url("../images/CuteNeko20200928102842.png");
-  background-repeat: no-repeat;
-  background-attachment: scroll, local;
+  background-repeat: repeat;
+  background-attachment: local;
   background-position: top;
   background-size: cover;
   -webkit-background-size: cover;
