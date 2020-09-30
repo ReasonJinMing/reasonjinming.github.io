@@ -1819,7 +1819,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ed7f5b;
+  background: #e44d55;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2991,7 +2991,7 @@ body {
   background: url("../images/CuteNeko20200928102842.png");
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: 50% 50%;
+  background-position: center;
   background-size: cover;
   -webkit-background-size: cover;
   -o-background-size: cover;
