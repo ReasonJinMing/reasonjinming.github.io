@@ -1819,7 +1819,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8acc74;
+  background: #ffa1ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3011,9 +3011,6 @@ a {
 }
 a:link {
   color: #000;
-}
-a:visited {
-  color: #800080;
 }
 .btn {
   background: #f4f4f4;
