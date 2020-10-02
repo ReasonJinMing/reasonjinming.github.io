@@ -1819,7 +1819,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #86d611;
+  background: #b85ec4;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2997,7 +2997,7 @@ body {
   -o-background-size: cover;
   -moz-background-size: cover;
   -ms-background-size: cover;
-  color: #222;
+  color: #000;
 }
 table {
   opacity: 0.8;
@@ -3007,9 +3007,8 @@ h1 {
 }
 blockquote {
   padding: 0 30px;
-  color: #000;
+  color: #555;
   border-left: 10px solid #21c151;
-  font: "Verdana";
   font-size: 14px;
 }
 .btn {
