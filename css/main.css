@@ -1819,7 +1819,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8cff98;
+  background: #ff83d1;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3009,6 +3009,8 @@ blockquote {
   padding: 0 30px;
   color: #000;
   border-left: 10px solid #21c151;
+  font: "Noto Serif SC";
+  font-size: 13px;
 }
 .btn {
   background: #f4f4f4;
