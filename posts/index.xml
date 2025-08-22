@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 我的博客</title><link>https://reasonjinming.github.io/posts/</link><description>Recent content in Posts on 我的博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>© 2025</copyright><lastBuildDate>Fri, 22 Aug 2025 11:29:14 +0800</lastBuildDate><atom:link href="https://reasonjinming.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>我的第一篇博客文章</title><link>https://reasonjinming.github.io/posts/first-post/</link><pubDate>Fri, 22 Aug 2025 11:29:14 +0800</pubDate><guid>https://reasonjinming.github.io/posts/first-post/</guid><description>&lt;h1 class="relative group">欢迎来到我的博客
+&lt;div id="欢迎来到我的博客" class="anchor">&lt;/div>
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#%e6%ac%a2%e8%bf%8e%e6%9d%a5%e5%88%b0%e6%88%91%e7%9a%84%e5%8d%9a%e5%ae%a2" aria-label="锚点">#&lt;/a>
+&lt;/span>
+&lt;/h1>
+&lt;p>这是我的第一篇使用Hugo和Blowfish主题创建的博客文章！&lt;/p>
+&lt;h2 class="relative group">为什么选择Hugo
+&lt;div id="为什么选择hugo" class="anchor">&lt;/div>
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e9%80%89%e6%8b%a9hugo" aria-label="锚点">#&lt;/a>
+&lt;/span>
+&lt;/h2>
+&lt;p>Hugo是一个快速、现代的静态网站生成器，用Go语言编写。它具有以下优点：&lt;/p>
+&lt;ul>
+&lt;li>构建速度快&lt;/li>
+&lt;li>易于部署&lt;/li>
+&lt;li>丰富的主题选择&lt;/li>
+&lt;li>强大的模板系统&lt;/li>
+&lt;/ul>
+&lt;h2 class="relative group">关于Blowfish主题
+&lt;div id="关于blowfish主题" class="anchor">&lt;/div>
+&lt;span
+class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100 select-none">
+&lt;a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#%e5%85%b3%e4%ba%8eblowfish%e4%b8%bb%e9%a2%98" aria-label="锚点">#&lt;/a>
+&lt;/span>
+&lt;/h2>
+&lt;p>Blowfish是一个现代化、响应式的Hugo主题，具有以下特点：&lt;/p>
+&lt;ul>
+&lt;li>美观的设计&lt;/li>
+&lt;li>深色/浅色模式切换&lt;/li>
+&lt;li>响应式布局&lt;/li>
+&lt;li>SEO优化&lt;/li>
+&lt;/ul>
+&lt;p>希望你喜欢这个博客！&lt;/p></description></item></channel></rss>
