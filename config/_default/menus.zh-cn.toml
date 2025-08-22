@@ -1,0 +1,33 @@
+# -- Menu Configuration --
+# Refer to the theme docs for more details about each of these parameters.
+# https://blowfish.page/docs/configuration/#menu-configuration
+
+[[main]]
+  name = "主页"
+  pageRef = "/"
+  weight = 10
+
+[[main]]
+  name = "文章"
+  pageRef = "/posts"
+  weight = 20
+
+[[main]]
+  name = "分类"
+  pageRef = "/categories"
+  weight = 30
+
+[[main]]
+  name = "标签"
+  pageRef = "/tags"
+  weight = 40
+
+[[main]]
+  name = "关于"
+  pageRef = "/about"
+  weight = 50
+
+[[main]]
+  name = "RSS"
+  pageRef = "/index.xml"
+  weight = 60
