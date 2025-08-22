@@ -10,9 +10,9 @@ draft: false
 
 ## 我的博客
 
-这个博客是使用Hugo框架和Blowfish主题搭建的，托管在GitHub Pages上。
+本博客用来记录一些经验，一些感想，可能文笔不太好，但也希望读者能有所收获。
 
 ## 联系方式
 
-- 邮箱: [your-email@example.com](mailto:your-email@example.com)
-- GitHub: [yourusername](https://github.com/yourusername)
+- 邮箱: 暂无
+- GitHub: [reasonjinming](https://github.com/reasonjinming)

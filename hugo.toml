@@ -1,4 +1,4 @@
 baseURL = 'https://reasonjinming.github.io'
 languageCode = 'zh-cn'
-title = '我的博客'
+title = "Anon's record"
 theme = 'blowfish'
